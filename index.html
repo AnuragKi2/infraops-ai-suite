@@ -3,293 +3,417 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="InfraOps AI Suite — Open source AI-powered ITSM operations intelligence. From aging incident analysis to audit-ready work note compliance.">
+<meta name="description" content="InfraOps AI Suite — Open source AI-powered ITSM operations intelligence.">
 <meta property="og:title" content="InfraOps AI Suite">
 <meta property="og:description" content="From raw tickets to real insight. AI-native operations intelligence for modern ITSM teams.">
-<meta property="og:type" content="website">
 <title>InfraOps AI Suite — IT Operations Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0f1923;color:#ffffff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#1a0533;color:#ffffff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── BACKGROUND ── */
+.bg-gradient{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 20% 0%,#4a1a8a 0%,transparent 60%),
+             radial-gradient(ellipse 60% 50% at 80% 100%,#2d0a6b 0%,transparent 55%),
+             radial-gradient(ellipse 100% 80% at 50% 50%,#120228 0%,#0a0118 100%)}
+.content{position:relative;z-index:1}
 
 /* ── NAV ── */
-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);background:rgba(15,25,35,0.90);border-bottom:0.5px solid rgba(255,255,255,0.06)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-icon{width:34px;height:34px;background:#4f46e5;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
-.logo-text{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#ffffff;letter-spacing:-0.01em}
-.nav-right{display:flex;align-items:center;gap:12px}
-.nav-badge{font-size:11px;color:#a78bfa;background:rgba(167,139,250,0.08);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:3px 10px}
-.nav-gh{font-size:12px;font-weight:500;color:#ffffff;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 14px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:background 0.2s}
-.nav-gh:hover{background:rgba(255,255,255,0.1)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 64px;
+  backdrop-filter:blur(20px);background:rgba(20,4,50,0.6);
+  border-bottom:1px solid rgba(150,80,255,0.15);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#7c3aed,#a855f7);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;
+  box-shadow:0 0 20px rgba(168,85,247,0.4)}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:-0.01em}
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-badge{font-size:11px;color:#c084fc;background:rgba(192,132,252,0.1);
+  border:1px solid rgba(192,132,252,0.2);border-radius:20px;padding:4px 12px}
+.nav-gh{font-size:13px;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#a855f7);
+  border-radius:8px;padding:8px 18px;text-decoration:none;
+  transition:opacity 0.2s,transform 0.15s;display:flex;align-items:center;gap:6px;
+  box-shadow:0 4px 15px rgba(168,85,247,0.3)}
+.nav-gh:hover{opacity:0.9;transform:translateY(-1px)}
 
 /* ── HERO ── */
-.hero{padding:100px 60px 72px;max-width:1000px;margin:0 auto;text-align:center}
-.hero-eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#818cf8;margin-bottom:24px;font-weight:500}
-h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;line-height:1.1;color:#ffffff;margin-bottom:10px;letter-spacing:-0.02em}
-h1 .accent{color:#818cf8}
-h1 .accent2{color:#2dd4bf}
-.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;color:#ffffff;margin-bottom:24px;letter-spacing:-0.01em}
-.hero-sub{font-size:16px;color:#ffffff;line-height:1.8;max-width:580px;margin:0 auto 44px}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.cta-primary{font-size:14px;font-weight:600;color:#ffffff;background:#4f46e5;border-radius:9px;padding:12px 24px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px}
-.cta-primary:hover{background:#4338ca;transform:translateY(-1px)}
-.cta-secondary{font-size:14px;font-weight:500;color:#ffffff;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:12px 24px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px}
-.cta-secondary:hover{background:rgba(255,255,255,0.08)}
+.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;
+  gap:48px;padding:100px 64px 80px;max-width:1300px;margin:0 auto}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+  color:#c084fc;background:rgba(192,132,252,0.08);
+  border:1px solid rgba(192,132,252,0.2);border-radius:20px;
+  padding:6px 14px;margin-bottom:28px}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:#a855f7;
+  border-radius:50%;animation:pulse 2s infinite}
+h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:800;
+  line-height:1.05;color:#fff;margin-bottom:12px;letter-spacing:-0.03em}
+h1 .line2{color:transparent;
+  background:linear-gradient(90deg,#c084fc,#818cf8,#38bdf8);
+  -webkit-background-clip:text;background-clip:text}
+.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;
+  color:rgba(255,255,255,0.7);margin-bottom:20px}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:40px;max-width:480px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.cta-primary{font-size:14px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#a855f7);
+  border-radius:10px;padding:14px 28px;text-decoration:none;
+  transition:transform 0.15s,box-shadow 0.2s;
+  box-shadow:0 6px 25px rgba(168,85,247,0.35);
+  display:inline-flex;align-items:center;gap:8px}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(168,85,247,0.45)}
+.cta-secondary{font-size:14px;font-weight:500;color:rgba(255,255,255,0.8);
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;padding:14px 28px;text-decoration:none;
+  transition:background 0.2s;display:inline-flex;align-items:center;gap:8px}
+.cta-secondary:hover{background:rgba(255,255,255,0.1)}
+
+/* ── HERO RIGHT — abstract visual ── */
+.hero-right{display:flex;align-items:center;justify-content:center}
+.hero-visual{position:relative;width:100%;max-width:500px}
+.visual-card{background:rgba(255,255,255,0.04);border:1px solid rgba(150,80,255,0.2);
+  border-radius:20px;padding:24px;backdrop-filter:blur(10px)}
+.visual-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.visual-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#fff}
+.visual-badge{font-size:10px;color:#34d399;background:rgba(52,211,153,0.1);
+  border:1px solid rgba(52,211,153,0.2);border-radius:20px;padding:3px 10px;
+  display:flex;align-items:center;gap:5px}
+.visual-badge::before{content:'';width:5px;height:5px;background:#34d399;
+  border-radius:50%;animation:pulse 2s infinite}
+.visual-rows{display:flex;flex-direction:column;gap:10px}
+.visual-row{display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;padding:12px 16px}
+.vr-left{display:flex;align-items:center;gap:10px}
+.vr-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.vr-dot.green{background:#34d399;box-shadow:0 0 6px rgba(52,211,153,0.5)}
+.vr-dot.amber{background:#fbbf24;box-shadow:0 0 6px rgba(251,191,36,0.5)}
+.vr-dot.red{background:#f87171;box-shadow:0 0 6px rgba(248,113,113,0.5)}
+.vr-label{font-size:12px;color:rgba(255,255,255,0.7);font-weight:500}
+.vr-pct{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;color:#fff}
+.vr-bar-wrap{width:80px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
+.vr-bar{height:100%;border-radius:2px}
+.vr-bar.green{background:linear-gradient(90deg,#10b981,#34d399)}
+.vr-bar.amber{background:linear-gradient(90deg,#d97706,#fbbf24)}
+.vr-bar.purple{background:linear-gradient(90deg,#7c3aed,#a855f7)}
+.visual-footer{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;justify-content:space-between}
+.vf-label{font-size:11px;color:rgba(255,255,255,0.4)}
+.vf-score{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;
+  color:transparent;background:linear-gradient(90deg,#c084fc,#818cf8);
+  -webkit-background-clip:text;background-clip:text}
+
+/* Floating accent cards */
+.float-card{position:absolute;background:rgba(255,255,255,0.06);
+  border:1px solid rgba(150,80,255,0.25);border-radius:12px;
+  padding:12px 16px;backdrop-filter:blur(10px)}
+.float-card.fc1{top:-30px;right:-20px}
+.float-card.fc2{bottom:-30px;left:-20px}
+.fc-label{font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:4px}
+.fc-value{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.fc-sub{font-size:10px;color:#a855f7;margin-top:2px}
 
 /* ── STATS ── */
-.stats-row{display:flex;justify-content:center;gap:0;border-top:0.5px solid rgba(255,255,255,0.05);border-bottom:0.5px solid rgba(255,255,255,0.05);margin:0 60px}
-.stat{flex:1;text-align:center;padding:32px 20px;border-right:0.5px solid rgba(255,255,255,0.05)}
+.stats-wrap{max-width:1300px;margin:0 auto;padding:0 64px}
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);
+  background:rgba(255,255,255,0.03);border:1px solid rgba(150,80,255,0.12);
+  border-radius:16px;overflow:hidden}
+.stat{padding:28px 20px;text-align:center;border-right:1px solid rgba(150,80,255,0.1)}
 .stat:last-child{border-right:none}
-.stat-n{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#ffffff;letter-spacing:-0.02em}
-.stat-l{font-size:12px;color:#ffffff;margin-top:4px;letter-spacing:0.02em}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;
+  color:transparent;background:linear-gradient(135deg,#c084fc,#818cf8);
+  -webkit-background-clip:text;background-clip:text}
+.stat-l{font-size:12px;color:rgba(255,255,255,0.45);margin-top:4px}
 
-/* ── SECTION LABEL ── */
-.sec-wrap{padding:64px 60px 0;max-width:1200px;margin:0 auto}
-.sec-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#4a7fa5;font-weight:500;display:flex;align-items:center;gap:16px;margin-bottom:24px}
-.sec-label::before,.sec-label::after{content:'';flex:1;height:0.5px;background:rgba(255,255,255,0.04)}
+/* ── SECTION ── */
+.sec-wrap{max-width:1300px;margin:0 auto;padding:64px 64px 0}
+.sec-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(192,132,252,0.5);display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(150,80,255,0.2),transparent)}
 
 /* ── GRID ── */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;padding:0 60px;max-width:1200px;margin:0 auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:16px;max-width:1300px;margin:0 auto;padding:0 64px}
 
 /* ── CARDS ── */
-.card{background:#131f2e;border:0.5px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;cursor:default;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;display:flex;flex-direction:column;gap:16px;overflow:hidden}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(150,80,255,0.12);
+  border-radius:18px;padding:28px;transition:border-color 0.2s,transform 0.2s,background 0.2s;
+  position:relative;display:flex;flex-direction:column;gap:16px;overflow:hidden;
+  backdrop-filter:blur(8px)}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.card::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;opacity:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(168,85,247,0.08),transparent);
+  transition:opacity 0.3s;pointer-events:none}
+.card:hover{border-color:rgba(168,85,247,0.35);transform:translateY(-4px);
+  background:rgba(255,255,255,0.05)}
+.card:hover::after{opacity:1}
 
-.card.ci::before{background:linear-gradient(90deg,#4f46e5,#7c3aed)}
-.card.ct::before{background:linear-gradient(90deg,#0d9488,#059669)}
-.card.cv::before{background:linear-gradient(90deg,#7c3aed,#9333ea)}
-.card.cs::before{background:linear-gradient(90deg,#0284c7,#0891b2)}
+.card.ci::before{background:linear-gradient(90deg,#7c3aed,#a855f7)}
+.card.ct::before{background:linear-gradient(90deg,#0d9488,#06b6d4)}
+.card.cv::before{background:linear-gradient(90deg,#9333ea,#c026d3)}
+.card.cs::before{background:linear-gradient(90deg,#2563eb,#7c3aed)}
 .card.ce::before{background:linear-gradient(90deg,#059669,#0d9488)}
 
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.ii{background:rgba(79,70,229,0.1);} 
-.it{background:rgba(13,148,136,0.1);}
-.iv{background:rgba(124,58,237,0.1);}
-.is{background:rgba(2,132,199,0.1);}
-.ie{background:rgba(5,150,105,0.1);}
+.card-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;
+  justify-content:center;font-size:22px;flex-shrink:0;
+  background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.15)}
 
-.badge-live{font-size:10px;font-weight:600;background:rgba(16,185,129,0.08);color:#34d399;border:0.5px solid rgba(16,185,129,0.2);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;white-space:nowrap;letter-spacing:0.04em}
-.badge-live::before{content:'';width:5px;height:5px;background:#34d399;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.badge-live{font-size:10px;font-weight:600;background:rgba(52,211,153,0.08);
+  color:#34d399;border:1px solid rgba(52,211,153,0.2);border-radius:20px;
+  padding:4px 10px;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.badge-live::before{content:'';width:5px;height:5px;background:#34d399;
+  border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 
-.card-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#ffffff;letter-spacing:0.06em}
-.card-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:#ffffff;line-height:1.25;letter-spacing:-0.01em}
-.card-desc{font-size:13px;color:#ffffff;line-height:1.7;flex:1}
+.card-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(168,85,247,0.4);letter-spacing:0.06em}
+.card-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;
+  color:#fff;line-height:1.25}
+.card-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;flex:1}
 
-.feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
-.feat{font-size:11px;color:#ffffff;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.05);border-radius:6px;padding:3px 9px;letter-spacing:0.02em}
+.feats{display:flex;flex-wrap:wrap;gap:6px}
+.feat{font-size:11px;color:rgba(192,132,252,0.8);
+  background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.15);
+  border-radius:6px;padding:3px 9px}
 
-.card-foot{display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid rgba(255,255,255,0.04);padding-top:16px;margin-top:4px}
-.card-tag{font-size:11px;color:#ffffff;letter-spacing:0.04em}
+.card-foot{display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,0.05);padding-top:14px;margin-top:4px}
+.card-tag{font-size:11px;color:rgba(255,255,255,0.3)}
 
 /* ── UPCOMING ── */
-.upcoming-wrap{padding:40px 60px 0;max-width:1200px;margin:0 auto}
-.upcoming-card{background:#0f1923;border:0.5px solid rgba(255,255,255,0.04);border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:18px}
-.up-icon{width:40px;height:40px;border-radius:10px;background:rgba(251,191,36,0.07);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.up-body{flex:1}
-.up-title{font-size:14px;font-weight:500;color:#ffffff;letter-spacing:-0.01em}
-.up-sub{font-size:12px;color:#ffffff;margin-top:4px;line-height:1.5}
-.up-badge{font-size:10px;color:#fbbf24;background:rgba(251,191,36,0.07);border:0.5px solid rgba(251,191,36,0.15);border-radius:20px;padding:4px 12px;white-space:nowrap;letter-spacing:0.04em}
+.upcoming-wrap{max-width:1300px;margin:0 auto;padding:40px 64px 0}
+.upcoming-card{background:rgba(255,255,255,0.02);border:1px solid rgba(251,191,36,0.15);
+  border-radius:14px;padding:22px 28px;display:flex;align-items:center;gap:18px}
+.up-icon{width:42px;height:42px;border-radius:11px;
+  background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.15);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.up-title{font-size:14px;font-weight:600;color:#fff}
+.up-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;line-height:1.5}
+.up-badge{font-size:10px;font-weight:600;color:#fbbf24;
+  background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.18);
+  border-radius:20px;padding:5px 14px;white-space:nowrap}
 
 /* ── HOW IT WORKS ── */
-.how-wrap{padding:72px 60px 0;max-width:1200px;margin:0 auto}
-.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:rgba(255,255,255,0.04);border-radius:14px;overflow:hidden;margin-top:24px}
-.how-step{background:#131f2e;padding:28px 24px;display:flex;flex-direction:column;gap:12px}
-.how-n{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:#ffffff}
-.how-icon{font-size:24px}
-.how-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#ffffff}
-.how-desc{font-size:12px;color:#ffffff;line-height:1.6}
+.how-wrap{max-width:1300px;margin:0 auto;padding:72px 64px 0}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  background:rgba(150,80,255,0.08);border:1px solid rgba(150,80,255,0.12);
+  border-radius:16px;overflow:hidden;margin-top:24px}
+.how-step{background:#120228;padding:30px 26px;transition:background 0.2s}
+.how-step:hover{background:rgba(168,85,247,0.08)}
+.how-n{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(168,85,247,0.4);letter-spacing:0.1em;margin-bottom:14px}
+.how-icon{font-size:26px;margin-bottom:12px}
+.how-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;
+  color:#fff;margin-bottom:8px}
+.how-desc{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.65}
 
 /* ── OPEN SOURCE ── */
-.os-wrap{padding:72px 60px;max-width:900px;margin:0 auto;text-align:center}
-.os-box{background:#131f2e;border:0.5px solid rgba(255,255,255,0.06);border-radius:20px;padding:52px 48px}
-.os-title{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#ffffff;margin-bottom:14px;letter-spacing:-0.02em}
-.os-sub{font-size:15px;color:#ffffff;line-height:1.7;max-width:480px;margin:0 auto 32px}
-.os-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}
-.pill{font-size:12px;color:#ffffff;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.06);border-radius:20px;padding:5px 14px}
-.gh-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#ffffff;background:#4f46e5;border-radius:9px;padding:13px 26px;text-decoration:none;transition:background 0.2s,transform 0.15s}
-.gh-btn:hover{background:#4338ca;transform:translateY(-1px)}
+.os-wrap{max-width:900px;margin:72px auto 0;padding:0 64px}
+.os-box{background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(168,85,247,0.08));
+  border:1px solid rgba(168,85,247,0.25);border-radius:24px;
+  padding:60px 52px;text-align:center;position:relative;overflow:hidden}
+.os-box::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:200px;height:200px;background:radial-gradient(circle,rgba(168,85,247,0.15),transparent);
+  border-radius:50%}
+.os-title{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:800;
+  color:#fff;margin-bottom:14px;letter-spacing:-0.02em;position:relative}
+.os-sub{font-size:15px;color:rgba(255,255,255,0.55);line-height:1.75;
+  max-width:500px;margin:0 auto 32px;position:relative}
+.os-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;
+  margin-bottom:36px;position:relative}
+.pill{font-size:12px;color:rgba(192,132,252,0.9);
+  background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);
+  border-radius:20px;padding:5px 14px}
+.gh-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;
+  color:#fff;background:linear-gradient(135deg,#7c3aed,#a855f7);
+  border-radius:10px;padding:14px 28px;text-decoration:none;
+  transition:transform 0.15s,box-shadow 0.2s;position:relative;
+  box-shadow:0 6px 25px rgba(168,85,247,0.35)}
+.gh-btn:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(168,85,247,0.45)}
 
 /* ── FOOTER ── */
-footer{padding:28px 60px;border-top:0.5px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:0}
-.foot-left{font-size:12px;color:#ffffff}
+footer{max-width:1300px;margin:64px auto 0;padding:28px 64px;
+  border-top:1px solid rgba(150,80,255,0.1);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.foot-left{font-size:12px;color:rgba(255,255,255,0.25)}
 .foot-right{display:flex;gap:8px;flex-wrap:wrap}
-.tech{font-size:11px;color:#ffffff;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.04);border-radius:6px;padding:3px 9px}
+.tech{font-size:11px;color:rgba(192,132,252,0.6);
+  background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.12);
+  border-radius:6px;padding:3px 10px}
 
 /* ── RESPONSIVE ── */
-@media(max-width:768px){
-  nav{padding:14px 20px}
-  .hero{padding:64px 20px 48px}
-  h1{font-size:36px}
-  .hero-tagline{font-size:16px}
-  .stats-row{margin:0 20px;flex-wrap:wrap}
-  .stat{min-width:50%;border-right:none;border-bottom:0.5px solid rgba(255,255,255,0.05);padding:20px}
-  .sec-wrap,.upcoming-wrap,.how-wrap{padding-left:20px;padding-right:20px}
-  .grid{padding:0 20px}
-  .os-wrap{padding:48px 20px}
-  .os-box{padding:36px 24px}
-  footer{padding:20px}
-  .nav-badge{display:none}
+@media(max-width:900px){
+  nav{padding:14px 24px}
+  .hero{grid-template-columns:1fr;padding:56px 24px 48px;gap:40px}
+  .hero-right{display:none}
+  h1{font-size:38px}
+  .stats-wrap,.sec-wrap,.grid,.upcoming-wrap,.how-wrap,.os-wrap{padding-left:24px;padding-right:24px}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .how-grid{grid-template-columns:1fr 1fr}
+  footer{padding:24px}
 }
 </style>
 </head>
 <body>
+
+<div class="bg-gradient"></div>
+
+<div class="content">
 
 <nav>
   <a href="/" class="logo">
     <div class="logo-icon">⚡</div>
     <span class="logo-text">InfraOps AI Suite</span>
   </a>
-  <div class="nav-right">
+  <div class="nav-links">
     <span class="nav-badge">Open Source</span>
-    <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="nav-gh" target="_blank" rel="noopener">
-      ⭐ Star on GitHub
-    </a>
+    <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="nav-gh" target="_blank" rel="noopener">⭐ Star on GitHub</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">IT Operations Intelligence Platform</div>
-  <h1>From raw tickets<br>to <em class="accent">real</em> <em class="accent2">insight.</em></h1>
-  <p class="hero-tagline">AI-native operations intelligence for modern ITSM teams.</p>
-  <p class="hero-sub">From aging incident analysis to audit-ready work note compliance — built for operations teams who need answers, not more dashboards to interpret.</p>
-  <div class="hero-ctas">
-    <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="cta-primary" target="_blank" rel="noopener">
-      🚀 Get started on GitHub
-    </a>
-    <a href="#dashboards" class="cta-secondary">
-      View dashboards ↓
-    </a>
+  <div class="hero-left">
+    <div class="hero-eyebrow">IT Operations Intelligence Platform</div>
+    <h1>From raw tickets<br><span class="line2">to real insight.</span></h1>
+    <p class="hero-tagline">AI-native intelligence for modern ITSM teams.</p>
+    <p class="hero-sub">From aging incident analysis to audit-ready work note compliance — built for operations teams who need answers, not more dashboards to interpret.</p>
+    <div class="hero-ctas">
+      <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="cta-primary" target="_blank" rel="noopener">🚀 Get started on GitHub</a>
+      <a href="#dashboards" class="cta-secondary">View dashboards ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-visual">
+      <div class="float-card fc1">
+        <div class="fc-label">Compliance Score</div>
+        <div class="fc-value">87%</div>
+        <div class="fc-sub">↑ 12% this week</div>
+      </div>
+      <div class="visual-card">
+        <div class="visual-header">
+          <span class="visual-title">Work Notes Compliance</span>
+          <span class="visual-badge">Live</span>
+        </div>
+        <div class="visual-rows">
+          <div class="visual-row">
+            <div class="vr-left"><div class="vr-dot green"></div><span class="vr-label">Unix OEM</span></div>
+            <div class="vr-bar-wrap"><div class="vr-bar green" style="width:92%"></div></div>
+            <span class="vr-pct">92%</span>
+          </div>
+          <div class="visual-row">
+            <div class="vr-left"><div class="vr-dot green"></div><span class="vr-label">Windows</span></div>
+            <div class="vr-bar-wrap"><div class="vr-bar green" style="width:85%"></div></div>
+            <span class="vr-pct">85%</span>
+          </div>
+          <div class="visual-row">
+            <div class="vr-left"><div class="vr-dot amber"></div><span class="vr-label">Storage</span></div>
+            <div class="vr-bar-wrap"><div class="vr-bar amber" style="width:71%"></div></div>
+            <span class="vr-pct">71%</span>
+          </div>
+          <div class="visual-row">
+            <div class="vr-left"><div class="vr-dot purple" style="background:#a855f7;box-shadow:0 0 6px rgba(168,85,247,0.5)"></div><span class="vr-label">Oracle DBA</span></div>
+            <div class="vr-bar-wrap"><div class="vr-bar purple" style="width:78%"></div></div>
+            <span class="vr-pct">78%</span>
+          </div>
+        </div>
+        <div class="visual-footer">
+          <span class="vf-label">63 incidents audited · 2-layer AI</span>
+          <span class="vf-score">87%</span>
+        </div>
+      </div>
+      <div class="float-card fc2">
+        <div class="fc-label">Aging P1/P2</div>
+        <div class="fc-value">3 breaches</div>
+        <div class="fc-sub">Action required</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats-row">
-  <div class="stat"><div class="stat-n">5</div><div class="stat-l">Live dashboards</div></div>
-  <div class="stat"><div class="stat-n">9-field</div><div class="stat-l">Work note audit</div></div>
-  <div class="stat"><div class="stat-n">2-layer</div><div class="stat-l">AI compliance scoring</div></div>
-  <div class="stat"><div class="stat-n">LAN-ready</div><div class="stat-l">No cloud dependency</div></div>
-  <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Open source forever</div></div>
+<div class="stats-wrap">
+  <div class="stats-row">
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">Live dashboards</div></div>
+    <div class="stat"><div class="stat-n">9-field</div><div class="stat-l">Work note audit</div></div>
+    <div class="stat"><div class="stat-n">2-layer</div><div class="stat-l">AI compliance scoring</div></div>
+    <div class="stat"><div class="stat-n">LAN-ready</div><div class="stat-l">No cloud dependency</div></div>
+    <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Open source forever</div></div>
+  </div>
 </div>
 
-<!-- OPERATIONS SECTION -->
-<div class="sec-wrap" id="dashboards">
-  <div class="sec-label">Operations</div>
-</div>
-
+<!-- OPERATIONS -->
+<div class="sec-wrap" id="dashboards"><div class="sec-label">Operations</div></div>
 <div class="grid" style="padding-top:16px">
-
   <div class="card ct">
     <div class="card-top">
-      <div class="card-icon it">📊</div>
+      <div class="card-icon">📊</div>
       <span class="badge-live">Live</span>
     </div>
     <div class="card-num">01</div>
     <div class="card-title">Daily Health Check</div>
     <div class="card-desc">Consolidated RAG status across all domains from Excel uploads. AI-generated summaries, cross-domain issues and change activities in one view.</div>
-    <div class="feats">
-      <span class="feat">Multi-domain upload</span>
-      <span class="feat">RAG status</span>
-      <span class="feat">AI summaries</span>
-      <span class="feat">PNG export</span>
-    </div>
-    <div class="card-foot">
-      <span class="card-tag">All domains</span>
-    </div>
+    <div class="feats"><span class="feat">Multi-domain upload</span><span class="feat">RAG status</span><span class="feat">AI summaries</span><span class="feat">PNG export</span></div>
+    <div class="card-foot"><span class="card-tag">All domains</span></div>
   </div>
-
   <div class="card ci">
     <div class="card-top">
-      <div class="card-icon ii">📋</div>
+      <div class="card-icon">📋</div>
       <span class="badge-live">Live</span>
     </div>
     <div class="card-num">02</div>
     <div class="card-title">Change Management</div>
     <div class="card-desc">Track planned changes across domains — morning view and evening status updates with printable reports for leadership briefings.</div>
-    <div class="feats">
-      <span class="feat">Domain grouping</span>
-      <span class="feat">Status tracking</span>
-      <span class="feat">Print export</span>
-      <span class="feat">DR support</span>
-    </div>
-    <div class="card-foot">
-      <span class="card-tag">All domains</span>
-    </div>
+    <div class="feats"><span class="feat">Domain grouping</span><span class="feat">Status tracking</span><span class="feat">Print export</span><span class="feat">DR support</span></div>
+    <div class="card-foot"><span class="card-tag">All domains</span></div>
   </div>
-
 </div>
 
-<!-- INCIDENT SECTION -->
-<div class="sec-wrap" style="padding-top:48px">
-  <div class="sec-label">Incident &amp; Ticket Management</div>
-</div>
-
+<!-- INCIDENT -->
+<div class="sec-wrap" style="padding-top:48px"><div class="sec-label">Incident &amp; Ticket Management</div></div>
 <div class="grid" style="padding-top:16px">
-
   <div class="card cv">
     <div class="card-top">
-      <div class="card-icon iv">⏱️</div>
+      <div class="card-icon">⏱️</div>
       <span class="badge-live">Live</span>
     </div>
     <div class="card-num">03</div>
     <div class="card-title">Incident Aging Report</div>
     <div class="card-desc">Analyse aging incidents and SRs by domain and bucket. Detects P1/P2 SLA breaches, on-hold anomalies, and generates manager-ready summaries.</div>
-    <div class="feats">
-      <span class="feat">SLA breach detection</span>
-      <span class="feat">Domain buckets</span>
-      <span class="feat">AI summaries</span>
-      <span class="feat">Excel export</span>
-    </div>
-    <div class="card-foot">
-      <span class="card-tag">INC · SR</span>
-    </div>
+    <div class="feats"><span class="feat">SLA breach detection</span><span class="feat">Domain buckets</span><span class="feat">AI summaries</span><span class="feat">Excel export</span></div>
+    <div class="card-foot"><span class="card-tag">INC · SR</span></div>
   </div>
-
   <div class="card cs">
     <div class="card-top">
-      <div class="card-icon is">🛡️</div>
+      <div class="card-icon">🛡️</div>
       <span class="badge-live">Live</span>
     </div>
     <div class="card-num">04</div>
     <div class="card-title">Work Notes Compliance</div>
     <div class="card-desc">Two-layer AI audit of ITSM work notes — completeness by field, then quality scored as a manager reads the full 9-field update story.</div>
-    <div class="feats">
-      <span class="feat">9-field audit</span>
-      <span class="feat">AI quality scoring</span>
-      <span class="feat">Domain scorecard</span>
-      <span class="feat">Trend analysis</span>
-    </div>
-    <div class="card-foot">
-      <span class="card-tag">INC · SR</span>
-    </div>
+    <div class="feats"><span class="feat">9-field audit</span><span class="feat">AI quality scoring</span><span class="feat">Domain scorecard</span><span class="feat">Trend analysis</span></div>
+    <div class="card-foot"><span class="card-tag">INC · SR</span></div>
   </div>
-
   <div class="card ce">
     <div class="card-top">
-      <div class="card-icon ie">✉️</div>
+      <div class="card-icon">✉️</div>
       <span class="badge-live">Live</span>
     </div>
     <div class="card-num">05</div>
     <div class="card-title">Work Notes Generator</div>
     <div class="card-desc">Reads Outlook email threads and generates structured, audit-ready 9-field ITSM work notes via AI. Supports forwarded chains and chaos detection.</div>
-    <div class="feats">
-      <span class="feat">Outlook integration</span>
-      <span class="feat">Chaos detection</span>
-      <span class="feat">9-field output</span>
-      <span class="feat">Confidence scoring</span>
-    </div>
-    <div class="card-foot">
-      <span class="card-tag">All teams</span>
-    </div>
+    <div class="feats"><span class="feat">Outlook integration</span><span class="feat">Chaos detection</span><span class="feat">9-field output</span><span class="feat">Confidence scoring</span></div>
+    <div class="card-foot"><span class="card-tag">All teams</span></div>
   </div>
-
 </div>
 
 <!-- UPCOMING -->
@@ -297,7 +421,7 @@ footer{padding:28px 60px;border-top:0.5px solid rgba(255,255,255,0.04);display:f
   <div class="sec-label" style="margin-bottom:16px">Upcoming</div>
   <div class="upcoming-card">
     <div class="up-icon">📈</div>
-    <div class="up-body">
+    <div>
       <div class="up-title">PMO Support &amp; SLA Dashboard</div>
       <div class="up-sub">Project milestone tracking, SLA compliance trends, and automated reporting for PMO teams.</div>
     </div>
@@ -309,30 +433,10 @@ footer{padding:28px 60px;border-top:0.5px solid rgba(255,255,255,0.04);display:f
 <div class="how-wrap">
   <div class="sec-label">How it works</div>
   <div class="how-grid">
-    <div class="how-step">
-      <div class="how-n">01</div>
-      <div class="how-icon">📥</div>
-      <div class="how-title">Export from ServiceNow</div>
-      <div class="how-desc">Download your incident or SR list as Excel. Apply date filters as needed.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-n">02</div>
-      <div class="how-icon">🔒</div>
-      <div class="how-title">Mask sensitive data</div>
-      <div class="how-desc">Run the bundled masker tool to strip IPs, names and IDs before AI processing.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-n">03</div>
-      <div class="how-icon">⚡</div>
-      <div class="how-title">Upload &amp; analyse</div>
-      <div class="how-desc">Drop the file into any dashboard. AI processes all records in batches automatically.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-n">04</div>
-      <div class="how-icon">📊</div>
-      <div class="how-title">Review &amp; export</div>
-      <div class="how-desc">Download the formatted Excel report or share the scorecard with your manager.</div>
-    </div>
+    <div class="how-step"><div class="how-n">01</div><div class="how-icon">📥</div><div class="how-title">Export from ServiceNow</div><div class="how-desc">Download your incident or SR list as Excel. Apply date filters as needed.</div></div>
+    <div class="how-step"><div class="how-n">02</div><div class="how-icon">🔒</div><div class="how-title">Mask sensitive data</div><div class="how-desc">Run the bundled masker tool to strip IPs, names and IDs before AI processing.</div></div>
+    <div class="how-step"><div class="how-n">03</div><div class="how-icon">⚡</div><div class="how-title">Upload &amp; analyse</div><div class="how-desc">Drop the file into any dashboard. AI processes all records in batches automatically.</div></div>
+    <div class="how-step"><div class="how-n">04</div><div class="how-icon">📊</div><div class="how-title">Review &amp; export</div><div class="how-desc">Download the formatted Excel report or share the scorecard with your manager.</div></div>
   </div>
 </div>
 
@@ -342,28 +446,22 @@ footer{padding:28px 60px;border-top:0.5px solid rgba(255,255,255,0.04);display:f
     <div class="os-title">Built to be shared.</div>
     <p class="os-sub">InfraOps AI Suite is open source. Self-host it on any Windows or Linux machine on your LAN. No data leaves your network.</p>
     <div class="os-pills">
-      <span class="pill">Python · Flask</span>
-      <span class="pill">Claude API (Anthropic)</span>
-      <span class="pill">SQLite</span>
-      <span class="pill">openpyxl</span>
-      <span class="pill">Waitress</span>
-      <span class="pill">LAN server</span>
+      <span class="pill">Python · Flask</span><span class="pill">Claude API (Anthropic)</span>
+      <span class="pill">SQLite</span><span class="pill">openpyxl</span>
+      <span class="pill">Waitress</span><span class="pill">LAN server</span>
     </div>
-    <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="gh-btn" target="_blank" rel="noopener">
-      ⭐ View on GitHub
-    </a>
+    <a href="https://github.com/AanuragKi2/infraops-ai-suite" class="gh-btn" target="_blank" rel="noopener">⭐ View on GitHub</a>
   </div>
 </div>
 
 <footer>
   <span class="foot-left">InfraOps AI Suite · Open Source · MIT License</span>
   <div class="foot-right">
-    <span class="tech">Python · Flask</span>
-    <span class="tech">Claude API</span>
-    <span class="tech">SQLite</span>
-    <span class="tech">LAN-ready</span>
+    <span class="tech">Python · Flask</span><span class="tech">Claude API</span>
+    <span class="tech">SQLite</span><span class="tech">LAN-ready</span>
   </div>
 </footer>
 
+</div>
 </body>
 </html>

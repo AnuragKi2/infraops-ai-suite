@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InfraOps AI Suite — Open source AI-powered ITSM operations intelligence. From aging incident analysis to audit-ready work note compliance.">
+<meta property="og:title" content="InfraOps AI Suite">
+<meta property="og:description" content="From raw tickets to real insight. AI-native operations intelligence for modern ITSM teams.">
+<meta property="og:type" content="website">
+<title>InfraOps AI Suite — IT Operations Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#080f1a;color:#e2e8f0;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 60px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);background:rgba(8,15,26,0.85);border-bottom:0.5px solid rgba(255,255,255,0.06)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:34px;height:34px;background:#4f46e5;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.logo-text{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#fff;letter-spacing:-0.01em}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-badge{font-size:11px;color:#a78bfa;background:rgba(167,139,250,0.08);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:3px 10px}
+.nav-gh{font-size:12px;font-weight:500;color:#cbd5e1;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);border-radius:8px;padding:7px 14px;text-decoration:none;display:flex;align-items:center;gap:6px;transition:background 0.2s}
+.nav-gh:hover{background:rgba(255,255,255,0.1)}
+
+/* ── HERO ── */
+.hero{padding:100px 60px 72px;max-width:1000px;margin:0 auto;text-align:center}
+.hero-eyebrow{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#6366f1;margin-bottom:24px;font-weight:500}
+h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;line-height:1.1;color:#f8fafc;margin-bottom:10px;letter-spacing:-0.02em}
+h1 .accent{color:#818cf8}
+h1 .accent2{color:#2dd4bf}
+.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:500;color:#94a3b8;margin-bottom:24px;letter-spacing:-0.01em}
+.hero-sub{font-size:16px;color:#64748b;line-height:1.8;max-width:580px;margin:0 auto 44px}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-primary{font-size:14px;font-weight:600;color:#fff;background:#4f46e5;border-radius:9px;padding:12px 24px;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:8px}
+.cta-primary:hover{background:#4338ca;transform:translateY(-1px)}
+.cta-secondary{font-size:14px;font-weight:500;color:#94a3b8;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:12px 24px;text-decoration:none;transition:background 0.2s;display:inline-flex;align-items:center;gap:8px}
+.cta-secondary:hover{background:rgba(255,255,255,0.08)}
+
+/* ── STATS ── */
+.stats-row{display:flex;justify-content:center;gap:0;border-top:0.5px solid rgba(255,255,255,0.05);border-bottom:0.5px solid rgba(255,255,255,0.05);margin:0 60px}
+.stat{flex:1;text-align:center;padding:32px 20px;border-right:0.5px solid rgba(255,255,255,0.05)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f1f5f9;letter-spacing:-0.02em}
+.stat-l{font-size:12px;color:#334155;margin-top:4px;letter-spacing:0.02em}
+
+/* ── SECTION LABEL ── */
+.sec-wrap{padding:64px 60px 0;max-width:1200px;margin:0 auto}
+.sec-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#1e3a5f;font-weight:500;display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:0.5px;background:rgba(255,255,255,0.04)}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;padding:0 60px;max-width:1200px;margin:0 auto}
+
+/* ── CARDS ── */
+.card{background:#0d1929;border:0.5px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px;cursor:default;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;position:relative;display:flex;flex-direction:column;gap:16px;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+
+.card.ci::before{background:linear-gradient(90deg,#4f46e5,#7c3aed)}
+.card.ct::before{background:linear-gradient(90deg,#0d9488,#059669)}
+.card.cv::before{background:linear-gradient(90deg,#7c3aed,#9333ea)}
+.card.cs::before{background:linear-gradient(90deg,#0284c7,#0891b2)}
+.card.ce::before{background:linear-gradient(90deg,#059669,#0d9488)}
+
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ii{background:rgba(79,70,229,0.1);} 
+.it{background:rgba(13,148,136,0.1);}
+.iv{background:rgba(124,58,237,0.1);}
+.is{background:rgba(2,132,199,0.1);}
+.ie{background:rgba(5,150,105,0.1);}
+
+.badge-live{font-size:10px;font-weight:600;background:rgba(16,185,129,0.08);color:#34d399;border:0.5px solid rgba(16,185,129,0.2);border-radius:20px;padding:4px 10px;display:flex;align-items:center;gap:5px;white-space:nowrap;letter-spacing:0.04em}
+.badge-live::before{content:'';width:5px;height:5px;background:#34d399;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+.card-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#0f2744;letter-spacing:0.06em}
+.card-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:#f1f5f9;line-height:1.25;letter-spacing:-0.01em}
+.card-desc{font-size:13px;color:#475569;line-height:1.7;flex:1}
+
+.feats{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.feat{font-size:11px;color:#1e3a5f;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.05);border-radius:6px;padding:3px 9px;letter-spacing:0.02em}
+
+.card-foot{display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid rgba(255,255,255,0.04);padding-top:16px;margin-top:4px}
+.card-tag{font-size:11px;color:#0f2744;letter-spacing:0.04em}
+
+/* ── UPCOMING ── */
+.upcoming-wrap{padding:40px 60px 0;max-width:1200px;margin:0 auto}
+.upcoming-card{background:#080f1a;border:0.5px solid rgba(255,255,255,0.04);border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:18px}
+.up-icon{width:40px;height:40px;border-radius:10px;background:rgba(251,191,36,0.07);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.up-body{flex:1}
+.up-title{font-size:14px;font-weight:500;color:#cbd5e1;letter-spacing:-0.01em}
+.up-sub{font-size:12px;color:#1e3a5f;margin-top:4px;line-height:1.5}
+.up-badge{font-size:10px;color:#fbbf24;background:rgba(251,191,36,0.07);border:0.5px solid rgba(251,191,36,0.15);border-radius:20px;padding:4px 12px;white-space:nowrap;letter-spacing:0.04em}
+
+/* ── HOW IT WORKS ── */
+.how-wrap{padding:72px 60px 0;max-width:1200px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:rgba(255,255,255,0.04);border-radius:14px;overflow:hidden;margin-top:24px}
+.how-step{background:#0d1929;padding:28px 24px;display:flex;flex-direction:column;gap:12px}
+.how-n{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:#1e3a5f}
+.how-icon{font-size:24px}
+.how-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:#f1f5f9}
+.how-desc{font-size:12px;color:#334155;line-height:1.6}
+
+/* ── OPEN SOURCE ── */
+.os-wrap{padding:72px 60px;max-width:900px;margin:0 auto;text-align:center}
+.os-box{background:#0d1929;border:0.5px solid rgba(255,255,255,0.06);border-radius:20px;padding:52px 48px}
+.os-title{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:#f1f5f9;margin-bottom:14px;letter-spacing:-0.02em}
+.os-sub{font-size:15px;color:#475569;line-height:1.7;max-width:480px;margin:0 auto 32px}
+.os-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.pill{font-size:12px;color:#334155;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.06);border-radius:20px;padding:5px 14px}
+.gh-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#fff;background:#4f46e5;border-radius:9px;padding:13px 26px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+.gh-btn:hover{background:#4338ca;transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;border-top:0.5px solid rgba(255,255,255,0.04);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:0}
+.foot-left{font-size:12px;color:#0f2744}
+.foot-right{display:flex;gap:8px;flex-wrap:wrap}
+.tech{font-size:11px;color:#1e3a5f;background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.04);border-radius:6px;padding:3px 9px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .hero{padding:64px 20px 48px}
+  h1{font-size:36px}
+  .hero-tagline{font-size:16px}
+  .stats-row{margin:0 20px;flex-wrap:wrap}
+  .stat{min-width:50%;border-right:none;border-bottom:0.5px solid rgba(255,255,255,0.05);padding:20px}
+  .sec-wrap,.upcoming-wrap,.how-wrap{padding-left:20px;padding-right:20px}
+  .grid{padding:0 20px}
+  .os-wrap{padding:48px 20px}
+  .os-box{padding:36px 24px}
+  footer{padding:20px}
+  .nav-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon">⚡</div>
+    <span class="logo-text">InfraOps AI Suite</span>
+  </a>
+  <div class="nav-right">
+    <span class="nav-badge">Open Source</span>
+    <a href="https://github.com" class="nav-gh" target="_blank" rel="noopener">
+      ⭐ Star on GitHub
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">IT Operations Intelligence Platform</div>
+  <h1>From raw tickets<br>to <em class="accent">real</em> <em class="accent2">insight.</em></h1>
+  <p class="hero-tagline">AI-native operations intelligence for modern ITSM teams.</p>
+  <p class="hero-sub">From aging incident analysis to audit-ready work note compliance — built for operations teams who need answers, not more dashboards to interpret.</p>
+  <div class="hero-ctas">
+    <a href="https://github.com" class="cta-primary" target="_blank" rel="noopener">
+      🚀 Get started on GitHub
+    </a>
+    <a href="#dashboards" class="cta-secondary">
+      View dashboards ↓
+    </a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat"><div class="stat-n">5</div><div class="stat-l">Live dashboards</div></div>
+  <div class="stat"><div class="stat-n">9-field</div><div class="stat-l">Work note audit</div></div>
+  <div class="stat"><div class="stat-n">2-layer</div><div class="stat-l">AI compliance scoring</div></div>
+  <div class="stat"><div class="stat-n">LAN-ready</div><div class="stat-l">No cloud dependency</div></div>
+  <div class="stat"><div class="stat-n">Free</div><div class="stat-l">Open source forever</div></div>
+</div>
+
+<!-- OPERATIONS SECTION -->
+<div class="sec-wrap" id="dashboards">
+  <div class="sec-label">Operations</div>
+</div>
+
+<div class="grid" style="padding-top:16px">
+
+  <div class="card ct">
+    <div class="card-top">
+      <div class="card-icon it">📊</div>
+      <span class="badge-live">Live</span>
+    </div>
+    <div class="card-num">01</div>
+    <div class="card-title">Daily Health Check</div>
+    <div class="card-desc">Consolidated RAG status across all domains from Excel uploads. AI-generated summaries, cross-domain issues and change activities in one view.</div>
+    <div class="feats">
+      <span class="feat">Multi-domain upload</span>
+      <span class="feat">RAG status</span>
+      <span class="feat">AI summaries</span>
+      <span class="feat">PNG export</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-tag">All domains</span>
+    </div>
+  </div>
+
+  <div class="card ci">
+    <div class="card-top">
+      <div class="card-icon ii">📋</div>
+      <span class="badge-live">Live</span>
+    </div>
+    <div class="card-num">02</div>
+    <div class="card-title">Change Management</div>
+    <div class="card-desc">Track planned changes across domains — morning view and evening status updates with printable reports for leadership briefings.</div>
+    <div class="feats">
+      <span class="feat">Domain grouping</span>
+      <span class="feat">Status tracking</span>
+      <span class="feat">Print export</span>
+      <span class="feat">DR support</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-tag">All domains</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- INCIDENT SECTION -->
+<div class="sec-wrap" style="padding-top:48px">
+  <div class="sec-label">Incident &amp; Ticket Management</div>
+</div>
+
+<div class="grid" style="padding-top:16px">
+
+  <div class="card cv">
+    <div class="card-top">
+      <div class="card-icon iv">⏱️</div>
+      <span class="badge-live">Live</span>
+    </div>
+    <div class="card-num">03</div>
+    <div class="card-title">Incident Aging Report</div>
+    <div class="card-desc">Analyse aging incidents and SRs by domain and bucket. Detects P1/P2 SLA breaches, on-hold anomalies, and generates manager-ready summaries.</div>
+    <div class="feats">
+      <span class="feat">SLA breach detection</span>
+      <span class="feat">Domain buckets</span>
+      <span class="feat">AI summaries</span>
+      <span class="feat">Excel export</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-tag">INC · SR</span>
+    </div>
+  </div>
+
+  <div class="card cs">
+    <div class="card-top">
+      <div class="card-icon is">🛡️</div>
+      <span class="badge-live">Live</span>
+    </div>
+    <div class="card-num">04</div>
+    <div class="card-title">Work Notes Compliance</div>
+    <div class="card-desc">Two-layer AI audit of ITSM work notes — completeness by field, then quality scored as a manager reads the full 9-field update story.</div>
+    <div class="feats">
+      <span class="feat">9-field audit</span>
+      <span class="feat">AI quality scoring</span>
+      <span class="feat">Domain scorecard</span>
+      <span class="feat">Trend analysis</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-tag">INC · SR</span>
+    </div>
+  </div>
+
+  <div class="card ce">
+    <div class="card-top">
+      <div class="card-icon ie">✉️</div>
+      <span class="badge-live">Live</span>
+    </div>
+    <div class="card-num">05</div>
+    <div class="card-title">Work Notes Generator</div>
+    <div class="card-desc">Reads Outlook email threads and generates structured, audit-ready 9-field ITSM work notes via AI. Supports forwarded chains and chaos detection.</div>
+    <div class="feats">
+      <span class="feat">Outlook integration</span>
+      <span class="feat">Chaos detection</span>
+      <span class="feat">9-field output</span>
+      <span class="feat">Confidence scoring</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-tag">All teams</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- UPCOMING -->
+<div class="upcoming-wrap" style="padding-top:48px">
+  <div class="sec-label" style="margin-bottom:16px">Upcoming</div>
+  <div class="upcoming-card">
+    <div class="up-icon">📈</div>
+    <div class="up-body">
+      <div class="up-title">PMO Support &amp; SLA Dashboard</div>
+      <div class="up-sub">Project milestone tracking, SLA compliance trends, and automated reporting for PMO teams.</div>
+    </div>
+    <span class="up-badge">Coming soon</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-wrap">
+  <div class="sec-label">How it works</div>
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-n">01</div>
+      <div class="how-icon">📥</div>
+      <div class="how-title">Export from ServiceNow</div>
+      <div class="how-desc">Download your incident or SR list as Excel. Apply date filters as needed.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">02</div>
+      <div class="how-icon">🔒</div>
+      <div class="how-title">Mask sensitive data</div>
+      <div class="how-desc">Run the bundled masker tool to strip IPs, names and IDs before AI processing.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">03</div>
+      <div class="how-icon">⚡</div>
+      <div class="how-title">Upload &amp; analyse</div>
+      <div class="how-desc">Drop the file into any dashboard. AI processes all records in batches automatically.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-n">04</div>
+      <div class="how-icon">📊</div>
+      <div class="how-title">Review &amp; export</div>
+      <div class="how-desc">Download the formatted Excel report or share the scorecard with your manager.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN SOURCE -->
+<div class="os-wrap">
+  <div class="os-box">
+    <div class="os-title">Built to be shared.</div>
+    <p class="os-sub">InfraOps AI Suite is open source. Self-host it on any Windows or Linux machine on your LAN. No data leaves your network.</p>
+    <div class="os-pills">
+      <span class="pill">Python · Flask</span>
+      <span class="pill">Claude API (Anthropic)</span>
+      <span class="pill">SQLite</span>
+      <span class="pill">openpyxl</span>
+      <span class="pill">Waitress</span>
+      <span class="pill">LAN server</span>
+    </div>
+    <a href="https://github.com" class="gh-btn" target="_blank" rel="noopener">
+      ⭐ View on GitHub
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="foot-left">InfraOps AI Suite · Open Source · MIT License</span>
+  <div class="foot-right">
+    <span class="tech">Python · Flask</span>
+    <span class="tech">Claude API</span>
+    <span class="tech">SQLite</span>
+    <span class="tech">LAN-ready</span>
+  </div>
+</footer>
+
+</body>
+</html>
